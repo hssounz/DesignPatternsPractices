@@ -1,6 +1,6 @@
 package org.example.Builder_DesignPattern.dao;
 
-import org.example.Builder_DesignPattern.Director;
+import org.example.Builder_DesignPattern.BankDirector;
 import org.example.Builder_DesignPattern.model.AccountStatus;
 import org.example.Builder_DesignPattern.model.AccountType;
 import org.example.Builder_DesignPattern.model.BankAccount;
@@ -59,7 +59,7 @@ public class AccountRepositoryImpl implements AccountRepository {
 
     public void sampleData() {
         for (int i = 0; i < 10; i++) {
-            BankAccount bankAccount = Director
+            BankAccount bankAccount = BankDirector
                     .bankAccountBuilder()
                     .balance(100 + Math.random()*100)
                     .currency(Math.random() < 0.5 ? "£" : "$")
