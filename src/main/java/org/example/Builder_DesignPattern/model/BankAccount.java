@@ -1,17 +1,21 @@
 package org.example.Builder_DesignPattern.model;
 
-public class BankAccount {
+public class BankAccount implements Cloneable {
     private Long accountId;
     private double balance;
     private String currency;
     private AccountType type;
     private AccountStatus status;
-
+    private Customer customer;
     public static class AccountBuilder {
         private BankAccount bankAccount = new BankAccount();
 
         public AccountBuilder balance(double balance){
             bankAccount.balance = balance;
+            return this;
+        }
+        public AccountBuilder customer(Customer customer){
+            bankAccount.customer = customer;
             return this;
         }
         public AccountBuilder currency(String currency){
@@ -71,6 +75,14 @@ public class BankAccount {
         return status;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     @Override
     public String toString() {
         return "BankAccount{" +
@@ -79,6 +91,14 @@ public class BankAccount {
                 ", currency='" + currency + '\'' +
                 ", type=" + type +
                 ", status=" + status +
+                ", customer=" + customer +
                 '}';
+    }
+
+    @Override
+    public BankAccount clone() throws CloneNotSupportedException {
+        BankAccount bankAccount = (BankAccount) super.clone();
+        bankAccount.setCustomer(bankAccount.getCustomer().clone());
+        return bankAccount;
     }
 }

@@ -2,6 +2,7 @@ package org.example.Builder_DesignPattern;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.example.Builder_DesignPattern.dao.AccountRepositoryImpl;
+import org.example.Builder_DesignPattern.model.AccountStatus;
 import org.example.Builder_DesignPattern.model.AccountType;
 import org.example.Builder_DesignPattern.model.BankAccount;
 import org.example.Builder_DesignPattern.util.JsonSerializer;
@@ -9,7 +10,7 @@ import org.example.Builder_DesignPattern.util.JsonSerializer;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws JsonProcessingException{
+    public static void main(String[] args) throws JsonProcessingException {
         JsonSerializer<BankAccount> bankAccountJsonSerializer = new JsonSerializer<>();
         AccountRepositoryImpl accountRepository = AccountRepositoryImpl.getInstance();
 
@@ -38,7 +39,5 @@ public class Main {
                         }
                     })
                     .forEach(System.out::println);
-
-
     }
 }
