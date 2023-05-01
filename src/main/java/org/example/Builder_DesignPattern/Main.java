@@ -11,7 +11,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws JsonProcessingException{
         JsonSerializer<BankAccount> bankAccountJsonSerializer = new JsonSerializer<>();
-        AccountRepositoryImpl accountRepository = new AccountRepositoryImpl();
+        AccountRepositoryImpl accountRepository = AccountRepositoryImpl.getInstance();
 
         accountRepository.sampleData();
 
